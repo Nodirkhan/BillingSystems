@@ -1,19 +1,18 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/User/login",
+      "DownstreamPathTemplate": "/api/user/login",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5000
+          "Host": "billing.authentication.api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/signIn",
-      "UpstreamHttpMethod": [ "Post" ]
+      "UpstreamPathTemplate": "/api/user/login"
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5021"
+    "BaseUrl": "http://localhost:8002"
   }
 }

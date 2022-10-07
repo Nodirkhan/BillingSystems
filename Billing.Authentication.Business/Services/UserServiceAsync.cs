@@ -50,6 +50,7 @@ namespace Billing.Authentication.Business.Services
                 return response;
             }
             response.StatusCode = 404;
+            response.IsSuccess = false;
             return response;
         }
         private List<Claim> GenerateClaims(User user)

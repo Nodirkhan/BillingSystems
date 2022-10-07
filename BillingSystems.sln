@@ -15,11 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing.Authentication.Busi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{457D0400-35CE-4F6B-A51C-4D2E9661BF90}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Billing.ApiGetAway", "Billing.ApiGetAway", "{3542C84C-C758-4EB0-B74D-2A5ACB104E56}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Billing.ApiGatEway", "Billing.ApiGatEway", "{3542C84C-C758-4EB0-B74D-2A5ACB104E56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing.ApiGetAway", "Billing.ApiGetAway\Billing.ApiGetAway.csproj", "{F7DE8837-5351-4791-A50E-D9EE8FDE825C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing.ApiGatEway", "Billing.ApiGetAway\Billing.ApiGatEway.csproj", "{F7DE8837-5351-4791-A50E-D9EE8FDE825C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C3C9E57E-4A16-45A8-BF42-57B352707F6B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{43419AD1-4465-4B99-BC8A-FE8A94260A1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Billing.Authentication.Business.Tests", "..\Billing.Authentication.Business.Tests\Billing.Authentication.Business.Tests.csproj", "{2682CAD5-0A5E-4F06-A80B-4695C900B15B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,14 @@ Global
 		{F7DE8837-5351-4791-A50E-D9EE8FDE825C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7DE8837-5351-4791-A50E-D9EE8FDE825C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7DE8837-5351-4791-A50E-D9EE8FDE825C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43419AD1-4465-4B99-BC8A-FE8A94260A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43419AD1-4465-4B99-BC8A-FE8A94260A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43419AD1-4465-4B99-BC8A-FE8A94260A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43419AD1-4465-4B99-BC8A-FE8A94260A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2682CAD5-0A5E-4F06-A80B-4695C900B15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2682CAD5-0A5E-4F06-A80B-4695C900B15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2682CAD5-0A5E-4F06-A80B-4695C900B15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2682CAD5-0A5E-4F06-A80B-4695C900B15B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +71,7 @@ Global
 		{7A29426B-F483-43AF-93DA-BC9840EA05C4} = {73775427-3CBA-4D22-AF00-FD53885CF200}
 		{3542C84C-C758-4EB0-B74D-2A5ACB104E56} = {457D0400-35CE-4F6B-A51C-4D2E9661BF90}
 		{F7DE8837-5351-4791-A50E-D9EE8FDE825C} = {3542C84C-C758-4EB0-B74D-2A5ACB104E56}
+		{2682CAD5-0A5E-4F06-A80B-4695C900B15B} = {C3C9E57E-4A16-45A8-BF42-57B352707F6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D9D62435-9AAE-4152-AB6A-51CFB91B71E0}

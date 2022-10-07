@@ -1,0 +1,27 @@
+version: '3.4'
+
+networks:
+  backend:
+
+services:
+  billing.apigateway:
+    image: ${DOCKER_REGISTRY-}billingapigateway
+    build:
+      context: .
+      dockerfile: Billing.ApiGetAway/Dockerfile
+    ports:
+      - 8002:80
+    networks:
+      - backend
+
+  billing.authentication.api:
+    image: ${DOCKER_REGISTRY-}billingauthenticationapi
+    build:
+      context: .
+      dockerfile: Billing.Authentication.Api/Dockerfile
+    networks:
+    - backend
+    environment:
+      - DB_HOST=mongodb://172.16.40.83:27017
+      - DB_NAME=BillingUserDatabase
+

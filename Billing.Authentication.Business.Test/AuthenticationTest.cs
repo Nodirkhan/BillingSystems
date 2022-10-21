@@ -13,7 +13,7 @@ namespace Billing.Authentication.Business.Test
     {
         private Mock<IUserRepositoryAsync> _userRepository = new Mock<IUserRepositoryAsync>();
         private UserServiceAsync _userService;
-        public AuthenticationTest()
+        public AuthenticationTest() 
         {
             _userService = new UserServiceAsync(_userRepository.Object);
         }
@@ -34,8 +34,6 @@ namespace Billing.Authentication.Business.Test
                 LastName = "Something",
                 Id = Guid.NewGuid().ToString(),
                 Password = "Something",
-                Role = null
-
             };
             _userRepository.Setup(x =>
                 x.LoginAsync(It.IsAny<string>(), It.IsAny<string>()))
@@ -46,13 +44,13 @@ namespace Billing.Authentication.Business.Test
             var response = await _userService.LoginAsync(login);
 
             // Assert
-
+            _userRepository.Verify(x => x.LoginAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
             Assert.True(response.IsSuccess);
             Assert.NotNull(response.Result);
         }
 
         [Fact]
-        public async Task LoginAsyc_ShouldReturnFalse_WhenUseiDoesNotExist()
+        public async Task LoginAsync_ShouldReturnFalse_WhenUserDoesNotExist()
         {
             //Arrange
             var login = new Login
@@ -68,6 +66,7 @@ namespace Billing.Authentication.Business.Test
             var response = await _userService.LoginAsync(login);
 
             //Assert
+            _userRepository.Verify(x => x.LoginAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Once);
             Assert.False(response.IsSuccess);
             Assert.Null(response.Result);
         }

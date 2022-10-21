@@ -21,7 +21,4 @@ services:
       dockerfile: Billing.Authentication.Api/Dockerfile
     networks:
     - backend
-    environment:
-      - DB_HOST=mongodb://172.16.40.83:27017
-      - DB_NAME=BillingUserDatabase
 

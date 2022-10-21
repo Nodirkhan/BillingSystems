@@ -14,28 +14,11 @@ namespace Billing.UserApi.Business.Test.UserTest
         public async Task Should_Return_NotEmpty_List_WhenUsersExist()
         {
             //Arrange
-            var user = new User
-            {
-                UserName = "Something",
-                FirstName = "Something",
-                LastName = "Something",
-                Id = Guid.NewGuid().ToString(),
-                Password = "Something",
-            };
-            var user1 = new UserForGetDTO
-            {
-                UserName = "Something",
-                FirstName = "Something",
-                LastName = "Something",
-                Id = Guid.NewGuid().ToString(),
-                Password = "Something",
-            };
-            var list = new List<User> { user};
-            var list1 = new List<UserForGetDTO> { user1};
+
             _userRepoMock.Setup(x => x.GetAllAsync())
-                .ReturnsAsync(list);
-            _mapperMock.Setup(x => x.Map<IEnumerable<UserForGetDTO>>(list))
-                .Returns(list1);
+                .ReturnsAsync(new List<User>());
+            _mapperMock.Setup(x => x.Map<IEnumerable<UserForGetDTO>>(It.IsAny<List<User>>()))
+                .Returns(new List<UserForGetDTO> { new UserForGetDTO(), new UserForGetDTO() });
             //Act
             var response = await _userService.GetAllAsync();
 
@@ -49,8 +32,8 @@ namespace Billing.UserApi.Business.Test.UserTest
             Assert.True(response.IsSuccess);
             Assert.NotNull(response.Result);
             Assert.NotEmpty(response.Result);
-            var single = Assert.Single(response.Result);
-            Assert.Equal(user.FirstName, single.FirstName);
+            var result = Assert.IsType<List<UserForGetDTO>>(response.Result);
+            Assert.Equal(2, result.Count);
         }
         [Fact]
         public async Task Should_Return_NotEmpty_List_WhenUsersDontExist()

@@ -1,4 +1,5 @@
 ﻿using Billing.UserApi.Domains.Entities;
+using Billing.UserApi.Domains.Models;
 using Moq;
 using System;
 using System.Linq.Expressions;
@@ -14,7 +15,7 @@ namespace Billing.UserApi.Business.Test.UserTest
         {
             //Arrange
             _userRepoMock.Setup(x => x.FindbyCondition(It.IsAny<Expression<Func<User, bool>>>()))
-                .ReturnsAsync(() => null).Verifiable();
+                .ReturnsAsync(() => null);
 
             //Act
             var response = await _userService.GetOneAsync(Guid.NewGuid().ToString());
@@ -24,6 +25,8 @@ namespace Billing.UserApi.Business.Test.UserTest
             Assert.Null(response.Result);
             Assert.Equal(404, response.StatusCode);
             _userRepoMock.Verify(x => x.FindbyCondition(It.IsAny<Expression<Func<User, bool>>>()), Times.Once);
+            _mapperMock.Verify(x => x.Map<UserForGetDTO>(It.IsAny<User>()), Times.Never);
+
         }
 
         [Fact]
@@ -41,6 +44,7 @@ namespace Billing.UserApi.Business.Test.UserTest
 
             //Assert
             _userRepoMock.Verify(x => x.FindbyCondition(It.IsAny<Expression<Func<User, bool>>>()), Times.Once);
+            _mapperMock.Verify(x => x.Map<UserForGetDTO>(It.IsAny<User>()), Times.Never);
             Assert.True(response.IsSuccess);
             Assert.Single(response.Result);
             Assert.NotNull(response.Result);

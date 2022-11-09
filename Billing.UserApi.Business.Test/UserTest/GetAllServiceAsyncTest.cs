@@ -17,6 +17,7 @@ namespace Billing.UserApi.Business.Test.UserTest
 
             _userRepoMock.Setup(x => x.GetAllAsync())
                 .ReturnsAsync(new List<User>());
+
             _mapperMock.Setup(x => x.Map<IEnumerable<UserForGetDTO>>(It.IsAny<List<User>>()))
                 .Returns(new List<UserForGetDTO> { new UserForGetDTO(), new UserForGetDTO() });
             //Act
